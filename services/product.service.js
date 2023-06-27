@@ -8,8 +8,18 @@ const getAll = async () => {
   return data;
 };
 
+const getByQuery = async (q) => {
+  const rows = await query(
+    'SELECT * FROM product WHERE product_name LIKE ? OR brand LIKE ?', 
+    ['%' + q + '%', '%' + q + '%'],
+  )
+  const data = emptyOrRows(rows);
+  return data;
+}
+
 const productService = {
-  getAll
+  getAll,
+  getByQuery
 }
 
 export default productService
