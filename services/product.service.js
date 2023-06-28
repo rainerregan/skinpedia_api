@@ -10,7 +10,7 @@ const getAll = async () => {
 
 const getByQuery = async (q) => {
   const rows = await query(
-    'SELECT * FROM product WHERE product_name LIKE ? OR brand LIKE ?', 
+    'SELECT * FROM product WHERE product_name LIKE ? OR brand LIKE ? LIMIT 10', 
     ['%' + q + '%', '%' + q + '%'],
   )
   const data = emptyOrRows(rows);
